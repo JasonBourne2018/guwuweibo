@@ -71,4 +71,10 @@ class UsersController extends Controller
         session()->flash('success', '用户资料编辑成功');
         return redirect()->route('users.show', compact('user'));
     }
+
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
 }
